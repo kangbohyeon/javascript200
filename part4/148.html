@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>이벤트 전파 제어하기 예제</title>
+        <style>
+            #prevent {
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            일반적인 글
+            <span id="prevent">이벤트를 막은 글</span>
+            <br />
+            일반적인 글 2
+        </p>
+        <script>
+            const normalPE1 = document.querySelector("p");
+            const eventPreventedE1 = document.querySelector("#prevent");
+            normalPE1.addEventListener("contextmenu", function () {
+                console.log("contextmenu 호출");
+            });
+            eventPreventedE1.addEventListener("contextmenu", function (event) {
+                console.log("이벤트 막은 글 클릭");
+                event.stopPropagation();
+                event.preventDefault();
+            });
+        </script>
+    </body>
+</html>
