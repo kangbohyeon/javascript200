@@ -30,7 +30,7 @@ const filePath = path.join(__dirname, "js200", "hello.txt");
 fs.open(filePath, "wx", (err, fd) => {
     if (err && err.code === "EEXIST")
         return appendFile(filePath, (err) => printErrIfExist(err));
-    if (err) return callback(err);
+    if (err) return console.log(`err : ${err.code}`);
 
     return makeFile(filePath, (err) => printErrIfExist(err));
 });
