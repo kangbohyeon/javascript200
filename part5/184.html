@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>멀티 슬라이드쇼 만들기</title>
+    </head>
+    <body>
+        <h1>국내 여행</h1>
+        <div class="slider">
+            <div class="slider-btn-wrapper slider-btn-wrapper-left">
+                <button id="left-btn" class="slider-btn">&larr;</button>
+            </div>
+            <div class="item-wrapper">
+                <div class="item">
+                    <img src="./images/seoul.png" alt="seoul" />
+                    <div class="title">
+                        <h2>서울</h2>
+                        <p>3000원</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="./images/jeju.png" alt="jeju" />
+                    <div class="title">
+                        <h2>제주도</h2>
+                        <p>4000원</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="./images/suwon.png" alt="suwon" />
+                    <div class="title">
+                        <h2>수원</h2>
+                        <p>3000원</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="./images/muju.png" alt="muju" />
+                    <div class="title">
+                        <h2>무주</h2>
+                        <p>5000원</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-btn-wrapper slider-btn-wrapper-right">
+                <button id="right-btn" class="slider-btn">&rarr;</button>
+            </div>
+        </div>
+        <script>
+            (function () {
+                const itemWrapperE1 = document.querySelector(".itme-wrapper"),
+                    leftBtnE1 = document.getElementById("left-btn"),
+                    rightBtnE1 = document.getElementById("right-btn");
+
+                function moveSlides(direction) {
+                    const item = itemWrapperE1.querySelector(".item"),
+                        itemMargin = parseFloat(
+                            getComputedStyle(item).marginRight
+                        );
+                    itemWidth = itemMargin + item.offsetWidth + 2;
+
+                    let itemCount = Math.floor(
+                        itemWrapperE1.scrollLeft / itemWidth
+                    );
+
+                    if (direction === "left") {
+                        itemCount = itemCount - 1;
+                    } else {
+                        itemCount = itemCount + 1;
+                    }
+                    itemWrapperE1.scrollLeft = itemWidth * itemCount;
+                }
+
+                leftBtnE1.addEventListener("click", (e) => {
+                    moveSlides("left");
+                });
+                rightBtnE1.addEventListener("click", (e) => {
+                    moveSlides("right");
+                });
+            });
+        </script>
+    </body>
+</html>
