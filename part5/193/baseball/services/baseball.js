@@ -1,6 +1,6 @@
 "use strict";
 
-const shortid = require("shrotid");
+const shortid = require("shortid");
 const { getRandomInt } = require("./util.js");
 const answerSymbol = Symbol("answer");
 

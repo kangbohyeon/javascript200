@@ -2,7 +2,7 @@
 
 const express = require("express");
 const services = require("../services");
-const createError = require("http-error");
+const createError = require("http-errors");
 
 const router = express.Router();
 router.route("/list").get(getList);
